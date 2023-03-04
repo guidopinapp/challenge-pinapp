@@ -12,13 +12,15 @@ public class ClienteResponseDTO {
     private String apellido;
     private Integer edad;
     private LocalDate fechaNacimiento;
+    private LocalDate fechaProbableMuerte;
 
-    public ClienteResponseDTO(Integer idCliente, String nombre, String apellido, Integer edad, LocalDate fechaNacimiento) {
+    public ClienteResponseDTO(Integer idCliente, String nombre, String apellido, Integer edad, LocalDate fechaNacimiento, LocalDate fechaProbableMuerte) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
+        this.fechaProbableMuerte = fechaProbableMuerte;
     }
 
     public Integer getIdCliente() {
@@ -59,5 +61,13 @@ public class ClienteResponseDTO {
 
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public LocalDate getFechaProbableMuerte() {
+        return fechaProbableMuerte;
+    }
+
+    public void setFechaProbableMuerte(LocalDate fechaProbableMuerte) {
+        this.fechaProbableMuerte = fechaProbableMuerte;
     }
 }

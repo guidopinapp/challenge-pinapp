@@ -11,9 +11,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -38,6 +38,16 @@ public class ClienteController {
         try {
             KPIClienteDTO kpiClienteDTO = clienteService.getKPIClientes();
             return new ResponseEntity<>(kpiClienteDTO, HttpStatus.OK);
+        } catch (Throwable e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/listclientes")
+    public ResponseEntity listClientes() {
+        try {
+            List<ClienteResponseDTO> clientes = clienteService.getClientes();
+            return new ResponseEntity<>(clientes, HttpStatus.OK);
         } catch (Throwable e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

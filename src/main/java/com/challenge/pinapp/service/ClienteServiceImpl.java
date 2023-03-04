@@ -11,6 +11,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -57,5 +58,18 @@ public class ClienteServiceImpl implements ClienteService {
 
         KPIClienteDTO kpiClienteDTO = new KPIClienteDTO(promedioEdad, desviacionEstandar);
         return kpiClienteDTO;
+    }
+
+    @Override
+    public List<ClienteResponseDTO> getClientes() {
+        List<Cliente> clientes = repository.getClientes();
+
+        List<ClienteResponseDTO> clientesResponseDTO = new ArrayList<>();
+
+        for (Cliente cliente : clientes) {
+            clientesResponseDTO.add(Mappers.getMapper(ClienteMapper.class).fromClientetoClienteResponseDTO(cliente));
+        }
+
+        return clientesResponseDTO;
     }
 }
