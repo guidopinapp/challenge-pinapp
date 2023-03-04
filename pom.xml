@@ -41,6 +41,19 @@
 			<version>8.0.31</version>
 		</dependency>
 
+		<!-- dependencias swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
 		<!-- dependencia mapper -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
