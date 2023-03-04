@@ -16,12 +16,19 @@ public class Cliente {
 
     private LocalDate fechaNacimiento;
 
-    public Cliente(Integer idCliente, String nombre, String apellido, Integer edad, LocalDate fechaNacimiento) {
+    private LocalDate fechaProbableMuerte;
+
+    public Cliente (){
+        
+    }
+
+    public Cliente(Integer idCliente, String nombre, String apellido, Integer edad, LocalDate fechaNacimiento, LocalDate fechaProbableMuerte) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
+        this.fechaProbableMuerte = fechaProbableMuerte;
     }
 
     public Integer getIdCliente() {
@@ -62,5 +69,13 @@ public class Cliente {
 
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public LocalDate getFechaProbableMuerte() {
+        return fechaProbableMuerte;
+    }
+
+    public void setFechaProbableMuerte(LocalDate fechaProbableMuerte) {
+        this.fechaProbableMuerte = fechaProbableMuerte;
     }
 }

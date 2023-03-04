@@ -2,6 +2,7 @@ package com.challenge.pinapp.controller;
 
 import com.challenge.pinapp.model.dto.ClienteRequestDTO;
 import com.challenge.pinapp.model.dto.ClienteResponseDTO;
+import com.challenge.pinapp.model.dto.KPIClienteDTO;
 import com.challenge.pinapp.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +26,18 @@ public class ClienteController {
     public ResponseEntity creaCliente(
             @Valid @RequestBody ClienteRequestDTO cliente) {
         try {
-            ClienteResponseDTO relacionDTO = clienteService.crearCliente(cliente);
-            return new ResponseEntity<>(relacionDTO, HttpStatus.CREATED);
+            ClienteResponseDTO clienteResponseDTO = clienteService.crearCliente(cliente);
+            return new ResponseEntity<>(clienteResponseDTO, HttpStatus.CREATED);
+        } catch (Throwable e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/kpideclientes")
+    public ResponseEntity kpiClientes() {
+        try {
+            KPIClienteDTO kpiClienteDTO = clienteService.getKPIClientes();
+            return new ResponseEntity<>(kpiClienteDTO, HttpStatus.OK);
         } catch (Throwable e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
